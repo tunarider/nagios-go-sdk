@@ -26,6 +26,10 @@ func Unknown(msg string) Output {
 	return Output{Message: fmt.Sprintf("Unknown: %s", msg), State: StateUnknown}
 }
 
-func MessageWithPerformance(msg string, performances []string) string {
-	return fmt.Sprintf("%s | %s ", msg, strings.Join(performances, " "))
+func MessageWithPerformance(msg string, performances []Performance) string {
+	var ps []string
+	for _, p := range performances {
+		ps = append(ps, p.String())
+	}
+	return fmt.Sprintf("%s | %s ", msg, strings.Join(ps, " "))
 }
